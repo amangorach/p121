@@ -33,8 +33,7 @@ while True:
                 finger_fold_status.append(True)
             else:
                 finger_fold_status.append(False)
-                cv2.imshow("hand tracking", img)
-                cv2.waitKey(1)
+                
             if all (finger_fold_status):
  
                 if lm_list [thumb_tip].y<lm_list [thumb_tip-1].y <lm_list [thumb_tip-2].y:
@@ -48,4 +47,6 @@ while True:
             mp_draw.draw_landmarks(img, hand_landmark,
             mp_hands.HAND_CONNECTIONS, mp_draw.DrawingSpec((0,0,255),2,2),
             mp_draw.DrawingSpec((0,255,0),4,2))
+cv2.imshow("hand tracking", img)
+cv2.waitKey(1)
     
