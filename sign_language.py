@@ -28,11 +28,11 @@ while True:
             for tip in finger_tips: 
                 x, y = int(lm_list [tip].x*w), int(lm_list [tip].y*h) 
                 cv2.circle(img, (x,y), 15, (255, 0, 0), cv2.FILLED)
-            if lm_list[tip].x < lm_list[tip - 3].x:
-                cv2.circle(img, (x,y), 15, (0, 255, 0), cv2.FILLED)
-                finger_fold_status.append(True)
-            else:
-                finger_fold_status.append(False)
+                if lm_list[tip].x < lm_list[tip - 3].x:
+                    cv2.circle(img, (x,y), 15, (0, 255, 0), cv2.FILLED)
+                    finger_fold_status.append(True)
+                else:
+                    finger_fold_status.append(False)
                 
             if all (finger_fold_status):
  
@@ -41,7 +41,7 @@ while True:
                     cv2.putText(img,"LIKE", (20,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 3)
                 if lm_list [thumb_tip].y > lm_list [thumb_tip-1].y > lm_list [thumb_tip-2].y:
                     print("DISLIKE") 
-                    cv2.putText(img,"DISLIKE", (20,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,), 3)
+                    cv2.putText(img,"DISLIKE", (20,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (1,9,10), 3)
 
 
             mp_draw.draw_landmarks(img, hand_landmark,
